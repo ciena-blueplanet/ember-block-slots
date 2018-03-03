@@ -1,5 +1,6 @@
-/* jshint expr:true */
-import Ember from 'ember'
+import { A } from '@ember/array'
+
+import EmberObject from '@ember/object'
 import { expect } from 'chai'
 import {
   describeComponent,
@@ -7,8 +8,8 @@ import {
 } from 'ember-mocha'
 import hbs from 'htmlbars-inline-precompile'
 
-const slotObject = Ember.Object.create({
-  params: Ember.A(
+const slotObject = EmberObject.create({
+  params: A(
     [ '0', '1', '2', '3', '4', '5', '6', '7', '8', '9' ]
   )
 })

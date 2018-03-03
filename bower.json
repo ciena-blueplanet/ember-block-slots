@@ -1,18 +1,10 @@
 {
   "name": "ember-block-slots",
-  "dependencies": {
-    "ember": "~2.5.0",
-    "ember-cli-shims": "0.1.1"
-  },
   "devDependencies": {
     "blanket": "5e94fc30f2e694bb5c3718ddcbf60d467f4b4d26",
-    "chai": "~2.3.0",
-    "ember-cli-test-loader": "0.2.2",
-    "ember-mocha-adapter": "~0.3.1",
     "highlightjs": "^9.2.0",
     "lodash": "^4.10.0",
     "marked": "^0.3.5",
-    "mocha": "~2.2.4",
     "perfect-scrollbar": ">=0.6.7 <2.0.0"
   }
 }

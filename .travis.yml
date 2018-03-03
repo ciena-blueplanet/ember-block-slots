@@ -1,8 +1,10 @@
 language: node_js
-sudo: false
 node_js:
 - '6.11.0'
 - 'stable'
+
+sudo: false
+dist: trusty
 
 addons:
   apt:
@@ -17,6 +19,8 @@ cache:
 
 env:
   matrix:
+  - EMBER_TRY_SCENARIO=ember-lts-2.8
+  - EMBER_TRY_SCENARIO=ember-lts-2.12
   - EMBER_TRY_SCENARIO=default
   - EMBER_TRY_SCENARIO=ember-release
   - EMBER_TRY_SCENARIO=ember-beta

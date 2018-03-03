@@ -1,8 +1,6 @@
-import Ember from 'ember'
-const {
-  Mixin,
-  computed
-} = Ember
+import { A } from '@ember/array'
+import Mixin from '@ember/object/mixin'
+import { computed } from '@ember/object'
 
 /**
  * A convenience mixin that provides the necessary interface
@@ -10,7 +8,7 @@ const {
  */
 export default Mixin.create({
   _slots: computed(function () {
-    return Ember.A()
+    return A()
   }),
 
   _activateSlot (name) {

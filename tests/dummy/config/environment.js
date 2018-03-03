@@ -1,24 +1,34 @@
+/* eslint-env node */
+'use strict'
+
 module.exports = function (environment) {
-  var ENV = {
+  let ENV = {
     modulePrefix: 'dummy',
     podModulePrefix: 'dummy/pods',
-    environment: environment,
-    baseURL: '/',
-    locationType: 'hash',
+    environment,
+    rootURL: '/',
+    locationType: 'auto',
     EmberENV: {
-      FEATURES: {}
+      FEATURES: {
+        // Here you can enable experimental features on an ember canary build
+        // e.g. 'with-controller': true
+      },
+      EXTEND_PROTOTYPES: {
+        // Prevent Ember Data from overriding Date.parse.
+        Date: false
+      }
     },
     APP: {}
   }
 
   switch (environment) {
     case 'production':
-      ENV.baseURL = '/ember-block-slots'
+      ENV.rootURL = '/ember-block-slots'
       break
 
     case 'test':
       // Testem prefers this...
-      ENV.baseURL = '/'
+      ENV.rootURL = '/'
       ENV.locationType = 'none'
 
       // keep test console output quieter

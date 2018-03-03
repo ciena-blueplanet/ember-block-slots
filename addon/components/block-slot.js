@@ -1,11 +1,8 @@
-import Ember from 'ember'
-const {
-  Component,
-  computed,
-  defineProperty,
-  isPresent,
-  on
-} = Ember
+import { readOnly } from '@ember/object/computed'
+import Component from '@ember/component'
+import { defineProperty } from '@ember/object'
+import { isPresent } from '@ember/utils'
+import { on } from '@ember/object/evented'
 import layout from '../templates/components/block-slot'
 import { PropTypes } from 'ember-prop-types'
 import Slots from '../mixins/slots'
@@ -71,7 +68,7 @@ const BlockSlot = Component.extend({
         // p0 p1 p2...
         yieldSlot._blockParams.forEach((param, index) => {
           defineProperty(this, `p${index}`,
-            computed.readOnly(`_yieldSlot._blockParams.${index}`)
+            readOnly(`_yieldSlot._blockParams.${index}`)
           )
         })
       }

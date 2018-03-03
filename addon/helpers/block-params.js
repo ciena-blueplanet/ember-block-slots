@@ -1,9 +1,7 @@
 /* eslint valid-jsdoc:0 */
-import Ember from 'ember'
-const {
-  A,
-  Helper
-} = Ember
+import { A } from '@ember/array'
+
+import Helper from '@ember/component/helper'
 
 /**
  * Per yield slot parameters made available to an associated block slot
