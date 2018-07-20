@@ -1,20 +1,17 @@
 language: node_js
 sudo: false
 node_js:
-- '6.11.0'
-- 'stable'
-
+- 6.11.0
+- stable
 addons:
   apt:
     sources:
     - ubuntu-toolchain-r-test
     packages:
     - g++-4.8
-
 cache:
   directories:
   - node_modules
-
 env:
   matrix:
   - EMBER_TRY_SCENARIO=default
@@ -22,46 +19,39 @@ env:
   - EMBER_TRY_SCENARIO=ember-beta
   - EMBER_TRY_SCENARIO=ember-canary
   global:
-    - CXX=g++-4.8
-    - secure: tac6xsCM4g2jUoimHNiL6ePnMCHrXBSL5FwwqdexkfNUjY4iduTN5te5PJDyjVBJYvDCmn22sitcSI5KjPip/m6MC7LM9l5X+Ut2RCoqttjXR7UL+2O53wIAcQ1Np6yYy+leiL6A6+vH/nRrhjArVk2b+B0JdMBSxKX3rNTCkjbep+vTsKmuqmpXOIM9RbBwi6OS3LMjQNk198qHL10ayVzP+Nc5Xf7262VVObR9eivRGma/MhXbv0qAALCoOsS0aK5KXAwXziCQwa3V7KNhtlWgaMVU/fHNKpan23ahv3b5ZMTnbfPI6oPyqLYge931MKibmaaUOe0pKaqSewUJK9RkDW+0qh1MLrY8hC0MgET9aFRSXE1SWIRQViDG7PTUxHE8DnReQnNNE3fYqP4kYakUbbHCPD6q+21CV76y4fRxRsBg/8tgUtf/OuO2fjXLjC+ZBOa5/SFosVnw2Nn0agd+JHnbaO0JEM2dZCoz6JxWVYvG98QvE/rwHY/AeIHeuNTdUZVws6evHzLlkiQaQlIWMtqoV5ThOu1tBU4TuuNeIIswX1D9ucjjufdXzsQRQlgQ2HfV7mEj6nTRIyGhpaobV8WnavLtqsvSc/V1kcW9PTQdim/oA9Z4wHwrW22TBA+HpomRXUQo3LsiYLACzI0i5s9o/aeIR9eJGzD7xAI=
-
+  - CXX=g++-4.8
+  - secure: tac6xsCM4g2jUoimHNiL6ePnMCHrXBSL5FwwqdexkfNUjY4iduTN5te5PJDyjVBJYvDCmn22sitcSI5KjPip/m6MC7LM9l5X+Ut2RCoqttjXR7UL+2O53wIAcQ1Np6yYy+leiL6A6+vH/nRrhjArVk2b+B0JdMBSxKX3rNTCkjbep+vTsKmuqmpXOIM9RbBwi6OS3LMjQNk198qHL10ayVzP+Nc5Xf7262VVObR9eivRGma/MhXbv0qAALCoOsS0aK5KXAwXziCQwa3V7KNhtlWgaMVU/fHNKpan23ahv3b5ZMTnbfPI6oPyqLYge931MKibmaaUOe0pKaqSewUJK9RkDW+0qh1MLrY8hC0MgET9aFRSXE1SWIRQViDG7PTUxHE8DnReQnNNE3fYqP4kYakUbbHCPD6q+21CV76y4fRxRsBg/8tgUtf/OuO2fjXLjC+ZBOa5/SFosVnw2Nn0agd+JHnbaO0JEM2dZCoz6JxWVYvG98QvE/rwHY/AeIHeuNTdUZVws6evHzLlkiQaQlIWMtqoV5ThOu1tBU4TuuNeIIswX1D9ucjjufdXzsQRQlgQ2HfV7mEj6nTRIyGhpaobV8WnavLtqsvSc/V1kcW9PTQdim/oA9Z4wHwrW22TBA+HpomRXUQo3LsiYLACzI0i5s9o/aeIR9eJGzD7xAI=
 matrix:
   fast_finish: true
   allow_failures:
   - env: EMBER_TRY_SCENARIO=ember-canary
-  - node: 'stable'
-
+  - node: stable
 before_install:
 - npm config set spin false
 - npm install -g coveralls pr-bumper@^2.0.0
-- $(npm root -g)/pr-bumper/.travis/maybe-check-scope.sh
-
+- "$(npm root -g)/pr-bumper/.travis/maybe-check-scope.sh"
 install:
-- $(npm root -g)/pr-bumper/.travis/maybe-install.sh
-
+- "$(npm root -g)/pr-bumper/.travis/maybe-install.sh"
 before_script:
-- "export DISPLAY=:99.0"
-- "sh -e /etc/init.d/xvfb start"
-- sleep 3 # give xvfb some time to start
-
+- export DISPLAY=:99.0
+- sh -e /etc/init.d/xvfb start
+- sleep 3
 script:
-- $(npm root -g)/pr-bumper/.travis/maybe-test.sh
-- .travis/maybe-bump-version.sh
-
+- "$(npm root -g)/pr-bumper/.travis/maybe-test.sh"
+- ".travis/maybe-bump-version.sh"
 after_success:
-- .travis/maybe-publish-coverage.sh
-- .travis/maybe-publish-gh-pages.sh
-
+- ".travis/maybe-publish-coverage.sh"
+- ".travis/maybe-publish-gh-pages.sh"
 deploy:
   provider: npm
   email: npm.ciena@gmail.com
   skip_cleanup: true
   api_key:
-    secure: ZHHk6EOGjm4emGgPZQk5COpiSDG+SSvfFgLI4wnFPf5kIiYM4klWA+gaLM0LAAOLTHb0lKKdRzneynp4pST4VtSZQ/M65qZ5fAVpfRAg2dFU71CUTmLxReW7NEGl/XXnXt9t21KPfr3kWS1Xu7lIuvURhofOPNn+89HXJBAh8XGygfou/43RMVj0+URinP8Ka7fwXG6HuwdJjhG7upicob+reQvHK82+y/yyDgoSY4HAnJ8n9H2sVoQkOwZ/qzfunwZiTgJS+qxPBtcI1AhKb4rfCz884b21VavlmwNKO5Ipq8EGIprb/b8fsL5byhJFSP7+D4Vw/CwM5hLdONbovt73asmLc6gtygIM+BNOpO0LmtjT5TqLsbg+oGcd3GLkMi3kqAp8oTlLhQ1IU+XQlbB88oiVzEswBj7CrPx+4ZOev80nMnUgb3lEPVj7O2C1lt1zXWeH4xiOdzKiFMlrR5Ga9nY/cnQN3J1++GXgniozyQIyefKaqXT4qMZz+4FFnwlOKkTeVAf6lkiVKeKdE2f+TF5pFtullqfJCHSZfcLAEqQUGJphzhkWBeakYy7kFPZyasX+875ps1zjeZ42i1sQuEFWj6F1vNzFEJpp+7vw0bgB+LrLj4zVu3KM4r/r8p+cD8KnhsvejggoEue+8jD5EK8uFFe5AfLJFsNkO4U=
+    secure: SXK9TW+jrVd2SWuQKloqxLUOKWpQn5e2E27pbHGhfpySDOdEFtgyeiERooR23EmFdruPIYd5s2EGgT3oS3DWvedqDfgS1W/gJaiZa3jGk4fh1uAz9AeLuK8QR1IbFDHFdpfviWJ5ooeav58KBSyNyDg72KSeIO9F5vcq7hQOz12jhtNoXuzcgaM1N+ULN5UG8dzGILK/ngPEvGX/9yZxiag9ae+FHcWDxQrtrKkuZKP4n7RRjshzvGhTTBukhpUCRjtK5UeIiWmY5q4120uQFfwPRTUtYliECUnaJMBqSzAEjeLz+duFINqzuTZzPg/B1NwAV7KL4bTmaEfhxxSXLPwViX0Ohmnzsh6bFPqKKwWiGObNnJy7J5IsY9S2x75d/w/CMyOruqRfUtGf1JYtQeNPFFGKAcOO4YW00D8kgIxvkwaNVQV0Cf/bIOPntiFsT9WzyAUZ/SerTIOzy/XQo4mXB83azJxt9QZWpcBJqU/wWPc5RUrizluvs9txZ7KkB/pZPvSnMHijeqaNleLlWMyDaCh6b3s9g5skv56qSiarx0ogl/mYgmSJtIIOYVBOB3EIMSSK2BlShdpRL6igyUo082vn95CaP4QOr+jWC5PPOyjtPd81f5YCiMms6j1aNHO8TSgk/QE9hRDMC0AOfP8Ev93FRE6oPggPBE/kk4I=
   on:
     all_branches: true
     condition: "$EMBER_TRY_SCENARIO = 'default'"
-    node: '6.11.0'
+    node: 6.11.0
     tags: true
 notifications:
   slack:
