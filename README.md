@@ -131,7 +131,7 @@ useful and requested by many. This addon has also helped illustrate how named bl
 the way for the inclusion in Ember proper. Since the Ember implementation is still under way anyone who wants to start 
 using named blocks today can use this plugin, and then make an easy transition when named blocks land in Ember.
 
-RFC: https://github.com/emberjs/rfcs/pull/226
+RFC details: https://github.com/emberjs/rfcs/pull/226
 
 ### Credits
 
