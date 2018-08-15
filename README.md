@@ -124,6 +124,14 @@ This project uses pr-bumper https://github.com/ciena-blueplanet/pr-bumper to pub
 
 We also lint the project using eslint - to check for errors and fix basic style issues run `./node_modules/.bin/eslint . --fix` in the root of the project (probably a better command for this)
 
+### Ember Named Blocks
+Ember has embraced this idea and are planning to implement named blocks. This shows that this type of functionality is 
+useful and requested by many. This addon has also helped illustrate how named blocks can work in practice, and helped pave
+the way for the inclusion in Ember proper. Since the Ember implementation is still under way anyone who wants to start 
+using named blocks today can use this plugin, and then make an easy transition when named blocks land in Ember.
+
+RFC: https://github.com/emberjs/rfcs/pull/226
+
 ### Credits
 
 Thanks to [@runspired](https://twitter.com/Runspired) for the initial inspiration for this implementation.
